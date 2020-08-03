@@ -1,0 +1,36 @@
+.categories button {
+	border: none;
+	background-color: #d11544;
+	padding: 10px 20px;
+	text-transform: uppercase;
+	font-family: sans-serif;
+	color: white;
+	font-weight: 600;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, .4);
+}
+
+.categoryTypes {
+	border-left: 1px solid #0000004d;
+	border-top-right-radius: 15px;
+	border-bottom-right-radius: 15px;
+}
+
+.categoryPokemons {
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+}
+
+.categories button:hover {
+	cursor: pointer;
+	background-color: #c71a40 !important;
+}
+
+.categories button:focus {
+	background-color: #c71a40 !important;
+}
+
+@media (max-width: 800px) {
+	.insideContainer {
+		min-width: 90% !important;
+	}
+}
