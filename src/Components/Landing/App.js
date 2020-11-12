@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./App.css";
 import PokemonCardData from "../PokemonCardData/PokemonCardData.jsx";
 import Loading from "../Loading/Loading.jsx";
 
-import Container from "react-bootstrap/Container";
+import { LastKnownContext } from "../../context/LastKnownUrl";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
@@ -11,70 +11,71 @@ import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 function App() {
   const [loading, setloading] = useState(true);
   const [pokemonList, setPokemonList] = useState([]);
-  const [offset, setOffset] = useState(19);
-  const [showPokemonsFrom, setShowPokemonsFrom] = useState(1);
-  // First time the component renders the data will be fetched
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const [limit] = useState(9);
+  const { showPokemonsFrom, setShowPokemonsFrom } = useContext(
+    LastKnownContext
+  );
+
+  const fetchData = async () => {
+    const url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${showPokemonsFrom}`;
+    const req = await fetch(url);
+    const data = await req.json();
+    setloading(false);
+    setPokemonList(data.results);
+  };
 
   useEffect(() => {
     setloading(true);
     setPokemonList([]);
-    fetchData();
-  }, [offset, showPokemonsFrom]);
+    let allowFetch = true;
+    allowFetch && fetchData();
 
-  const fetchData = async () => {
-    let tempPkmList = [];
+    // Unsubscribe fetch request on component unmount
+    return () => {
+      allowFetch = false;
+    };
 
-    for (let i = showPokemonsFrom; i < offset; i++) {
-      const url = `https://pokeapi.co/api/v2/pokemon/${i}`;
-      const req = await fetch(url);
-      const data = await req.json();
-      tempPkmList.push(data);
-    }
-
-    setloading(false);
-    setPokemonList(tempPkmList);
-  };
+    // eslint-disable-next-line
+  }, [limit, showPokemonsFrom]);
 
   const handleNext = () => {
-    setOffset(offset + 19);
-    setShowPokemonsFrom(showPokemonsFrom + 19);
+    setShowPokemonsFrom(showPokemonsFrom + 9);
   };
 
   const handlePrev = () => {
-    if (showPokemonsFrom - 19 >= 1) {
-      setOffset(offset - 19);
-      setShowPokemonsFrom(showPokemonsFrom - 19);
+    if (showPokemonsFrom - 9 >= 0) {
+      setShowPokemonsFrom(showPokemonsFrom - 9);
     }
   };
 
   const RenderEachCard = () => {
     return pokemonList.map((pokemon) => (
-      <Link style={{ textDecoration: "none" }} to={"/pokemon/" + pokemon.name}>
-        <PokemonCardData name={pokemon.name} key={pokemon.id} />
+      <Link
+        key={pokemon.id}
+        style={{ textDecoration: "none" }}
+        to={"/pokemon/" + pokemon.name}>
+        <PokemonCardData key={pokemon.id} name={pokemon.name} />
       </Link>
     ));
   };
 
   return (
     <React.Fragment>
-      <div className="containerFluid">
-        <div className="buttons">
-          <div className="buttonsContainer">
+      <div className='containerFluid'>
+        <div className='buttons'>
+          <div className='buttonsContainer'>
             <button onClick={handlePrev}>
-              <FontAwesomeIcon className="icon" icon={faAngleLeft} />
+              <FontAwesomeIcon className='icon' icon={faAngleLeft} />
               Previous
             </button>
             <button onClick={handleNext}>
-              Next <FontAwesomeIcon className="icon" icon={faAngleRight} />
+              Next <FontAwesomeIcon className='icon' icon={faAngleRight} />
             </button>
           </div>
         </div>
-        <Container bsPrefix="bigContainer">
+        <div className='bigContainer'>
           {loading ? <Loading /> : <RenderEachCard />}
-        </Container>
+        </div>
       </div>
     </React.Fragment>
   );

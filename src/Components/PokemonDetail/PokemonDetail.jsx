@@ -12,11 +12,13 @@ export default function PokemonDetails({ match }) {
 
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line
   }, [match]);
 
   // Wait for pokemon data response
   useEffect(() => {
     fetchTypesData();
+    // eslint-disable-next-line
   }, [loaded]);
 
   const fetchData = async () => {
@@ -45,15 +47,12 @@ export default function PokemonDetails({ match }) {
   };
 
   return (
-    <div
-      className="pokemonDetails"
-      style={{ display: "flex", justifyContent: "center" }}
-    >
+    <div style={{ display: "flex", justifyContent: "center" }}>
       {loaded ? (
         <Details pokemon={pokemon} species={species} typeInfo={typeInfo} />
       ) : (
-        <div style={{ marginTop: "20px" }} className="bigContainer">
-          <Loading></Loading>
+        <div style={{ marginTop: "20px" }} className='bigContainer'>
+          <Loading />
         </div>
       )}
     </div>

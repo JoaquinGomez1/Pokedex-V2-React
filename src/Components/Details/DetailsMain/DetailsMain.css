@@ -1,0 +1,27 @@
+.details-bio-main {
+  width: 100%;
+}
+
+.detailsImage {
+  display: flex;
+  margin: 0 auto;
+}
+
+.detailsImage > div {
+  margin: 0 auto;
+}
+
+.detailsImage .shinyView {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.types {
+  display: flex;
+}
+
+.types > h3 {
+  margin: 0 auto;
+  text-align: center;
+}

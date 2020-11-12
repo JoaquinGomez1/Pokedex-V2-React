@@ -1,36 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap");
+nav {
+  max-width: 1500px;
+  width: 100vw;
+  margin: 0 auto;
+}
+
 .categories button {
-	border: none;
-	background-color: #d11544;
-	padding: 10px 20px;
-	text-transform: uppercase;
-	font-family: sans-serif;
-	color: white;
-	font-weight: 600;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, .4);
+  border: none;
+  background-color: #d11544;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  font-family: "Nunito";
+  color: white;
+  font-weight: 600;
 }
 
 .categoryTypes {
-	border-left: 1px solid #0000004d;
-	border-top-right-radius: 15px;
-	border-bottom-right-radius: 15px;
+  border-left: 1px solid #0000004d;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
-.categoryPokemons {
-	border-top-left-radius: 15px;
-	border-bottom-left-radius: 15px;
+.insideContainer {
+  margin: 0 auto;
+  background-color: white;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.8);
+  padding: 1rem 0;
+  font-family: "Nunito";
 }
 
-.categories button:hover {
-	cursor: pointer;
-	background-color: #c71a40 !important;
+.insideContainer > a > h1 {
+  font-size: 2.5rem;
 }
 
-.categories button:focus {
-	background-color: #c71a40 !important;
+.btn {
+  height: 100%;
+  padding: 12px 14px;
+  border: none;
+  box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  font-weight: 600;
+  font-family: "Nunito";
+}
+
+.search-btn {
+  background-color: #d11544;
+  color: white;
+}
+
+.inputSearch {
+  background: rgba(0, 0, 0, 0.05);
+  border: none;
+  outline: none;
+  font-size: 1.2rem;
 }
 
 @media (max-width: 800px) {
-	.insideContainer {
-		min-width: 90% !important;
-	}
+  .insideContainer {
+    min-width: 90% !important;
+  }
 }

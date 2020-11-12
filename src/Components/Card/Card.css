@@ -1,76 +1,156 @@
 .Card-container {
-	width: 213px;
-	height: 158px;
-	font-family: sans-serif;
-	background-color: white;
-	color: white;
-	text-shadow: 2px 2px 3px rgba(0, 0, 0, .3);
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	text-transform: capitalize;
-	box-shadow: 2px 2px 4px rgba(0, 0, 0, .4);
-	position: relative;
+  width: 100%;
+  height: 250px;
+  background-color: white;
+  color: white;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  position: relative;
+  border-radius: 8px;
+  z-index: 0;
+  transition: animation 0.1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  animation: popUp 0.5s;
+}
+
+/* Stagger Effect animation */
+.bigContainer .Card-container:nth-child(1) {
+  animation-delay: 0.1;
+}
+.bigContainer .Card-container:nth-child(2) {
+  animation-delay: 0.4;
+}
+.bigContainer .Card-container:nth-child(3) {
+  animation-delay: 0.8;
+}
+.bigContainer .Card-container:nth-child(4) {
+  animation-delay: 1.2;
+}
+.bigContainer .Card-container:nth-child(5) {
+  animation-delay: 1.6;
+}
+.bigContainer .Card-container:nth-child(6) {
+  animation-delay: 1;
 }
 
 .bgFilter {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	transform: scale(0);
-	transition: transform 100ms ease-in-out;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: scale(0);
+  transition: transform 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.imageContainer {
+  position: relative;
+}
+
+.imageContainer > img {
+  max-width: 150px;
+}
+
+.badge-background-text {
+  position: absolute;
+  z-index: -2;
+  top: -30px;
+  right: 0;
+  left: 20px;
+  font-size: 3rem;
+  color: rgb(46, 46, 46);
+  opacity: 0.5;
+  font-family: "Nunito";
+}
+
+.badge-background-circle {
+  position: absolute;
+  z-index: -4;
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.Card-image {
+  z-index: 20;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .Card-info {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Nunito";
 }
 
 .Card-info * {
-	margin: 5px 0;
+  margin: 5px 0;
+}
+
+.Card-name {
+  font-size: 1.75rem;
+  opacity: 0.9;
 }
 
 .Card-container:hover {
-	cursor: pointer;
+  cursor: pointer;
+  transition: transform 1s ease-in-out;
 }
 
 .Card-container:hover .bgFilter {
-	background-color: rgba(0, 0, 0, .6);
-	transform: scale(1);
+  background-color: rgba(0, 0, 0, 0.6);
+  transform: scale(1);
+  border-radius: 8px;
 }
 
-.Card-container:hover .Card-info {
-	display: none;
+.Card-container:hover .Card-info,
+.Card-container:hover .badge-background-text {
+  display: none;
 }
 
 .Card-container .imageContainer {
-	transition: 50ms ease-in-out transform;
+  transition: 50ms ease-in-out transform;
 }
 
 .Card-container:hover .imageContainer {
-	z-index: 2;
-	transform: scale(1.4);
+  z-index: 2;
+  transform: scale(1.4);
+}
+
+@keyframes popUp {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 600px) {
-	/*Make the same on hover effect on mobile view*/
-	.Card-container:active .bgFilter {
-		background-color: rgba(0, 0, 0, .6);
-		transform: scale(1);
-	}
+  /*Make the same on hover effect on mobile view*/
+  .Card-container:active .bgFilter {
+    background-color: rgba(0, 0, 0, 0.6);
+    transform: scale(1);
+  }
 
-	.Card-container:active .Card-info {
-		display: none;
-	}
+  .Card-container:active .Card-info {
+    display: none;
+  }
 
-	.Card-container .imageContainer {
-		transition: 50ms ease-in-out transform;
-	}
+  .Card-container .imageContainer {
+    transition: 50ms ease-in-out transform;
+  }
 
-	.Card-container:active .imageContainer {
-		z-index: 2;
-		transform: scale(1.4);
-	}
+  .Card-container:active .imageContainer {
+    z-index: 2;
+    transform: scale(1.4);
+  }
 }

@@ -5,6 +5,7 @@ import { getBackgroundColor } from "../../pkmTypesFunctions";
 import "./TypeDetails.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import Loading from "../Loading/Loading";
 
 export default function TypesDetail({ match }) {
   const [types, setTypes] = useState([]);
@@ -13,11 +14,11 @@ export default function TypesDetail({ match }) {
   /*eslint-disable-next-line*/
   useEffect(() => {
     fetchTypesList();
+    // eslint-disable-next-line
   }, [match]);
 
   async function fetchTypesList() {
     const url = "https://pokeapi.co/api/v2/type/" + match.params.name;
-    console.log(url);
     const req = await fetch(url);
     const data = await req.json();
     setTypes(data);
@@ -41,37 +42,31 @@ export default function TypesDetail({ match }) {
         return damage_relations.double_damage_from.map((each) => (
           <li key={each.name}>{each.name}</li>
         ));
-        break;
 
       case "double_damage_to":
         return damage_relations.double_damage_to.map((each) => (
           <li key={each.name}>{each.name}</li>
         ));
-        break;
 
       case "half_damage_from":
         return damage_relations.half_damage_from.map((each) => (
           <li key={each.name}>{each.name}</li>
         ));
-        break;
 
       case "half_damage_to":
         return damage_relations.half_damage_to.map((each) => (
           <li key={each.name}>{each.name}</li>
         ));
-        break;
 
       case "no_damage_from":
         return damage_relations.no_damage_from.map((each) => (
           <li key={each.name}>{each.name}</li>
         ));
-        break;
 
       case "no_damage_to":
         return damage_relations.no_damage_to.map((each) => (
           <li key={each.name}>{each.name}</li>
         ));
-        break;
 
       default:
         return (
@@ -93,103 +88,99 @@ export default function TypesDetail({ match }) {
 
   return (
     <React.Fragment>
-      <div className="containerFluid">
+      <div className='containerFluid'>
         <Container
           style={{ backgroundColor: bgColor, color: "white" }}
-          bsPrefix="bigContainer"
-          className="typeDetailsContainer"
-        >
+          bsPrefix='bigContainer'
+          className='typeDetailsContainer'>
           {loading ? (
-            <h1>
-              Loading
-              <h1 />
-            </h1>
+            <Loading></Loading>
           ) : (
             <React.Fragment>
-              <h1 className="typesName">Type: {types.name}</h1>
+              <h1 className='typesName'>Type: {types.name}</h1>
               <img
                 src={process.env.PUBLIC_URL + `/Images/Types/${types.name}.svg`}
                 alt={types.name}
               />
-              <div className="damageRelationsContainer">
-                <input type="checkbox" id="titleCheck" />
-                <label htmlFor="titleCheck">
-                  <h2 className="damageTitle">
+              <div className='damageRelationsContainer'>
+                <input type='checkbox' id='titleCheck' />
+                <label htmlFor='titleCheck'>
+                  <h2 className='damageTitle'>
                     Damage Relations:{" "}
-                    <FontAwesomeIcon className="icon" icon={faAngleDown} />
+                    <FontAwesomeIcon className='icon' icon={faAngleDown} />
                   </h2>
                 </label>
-                <div className="damageRelationsDiv">
-                  <div className="item">
-                    <input type="checkbox" id="DDF" />
-                    <label htmlFor="DDF">
+                <div className='damageRelationsDiv'>
+                  <div className='item'>
+                    <input type='checkbox' id='DDF' />
+                    <label htmlFor='DDF'>
                       Double Damage From:{" "}
-                      <FontAwesomeIcon className="icon" icon={faAngleDown} />
+                      <FontAwesomeIcon className='icon' icon={faAngleDown} />
                     </label>
-                    <ul className="doubleDamageFrom">
+                    <ul className='doubleDamageFrom'>
                       {getDamageRelation("double_damage_from")}
                     </ul>
                   </div>
 
-                  <div className="item">
-                    <input type="checkbox" id="DDT" />
-                    <label htmlFor="DDT">
+                  <div className='item'>
+                    <input type='checkbox' id='DDT' />
+                    <label htmlFor='DDT'>
                       Double Damage To:{" "}
-                      <FontAwesomeIcon className="icon" icon={faAngleDown} />
+                      <FontAwesomeIcon className='icon' icon={faAngleDown} />
                     </label>
-                    <ul className="doubleDamageTo">
+                    <ul className='doubleDamageTo'>
                       {getDamageRelation("double_damage_to")}
                     </ul>
                   </div>
 
-                  <div className="item">
-                    <input type="checkbox" id="HDF" />
-                    <label htmlFor="HDF">
+                  <div className='item'>
+                    <input type='checkbox' id='HDF' />
+                    <label htmlFor='HDF'>
                       Half Damage From:{" "}
-                      <FontAwesomeIcon className="icon" icon={faAngleDown} />
+                      <FontAwesomeIcon className='icon' icon={faAngleDown} />
                     </label>
-                    <ul className="halfDamageFrom">
+                    <ul className='halfDamageFrom'>
                       {getDamageRelation("half_damage_from")}{" "}
                     </ul>
                   </div>
 
-                  <div className="item">
-                    <input type="checkbox" id="HDT" />
-                    <label htmlFor="HDT">
+                  <div className='item'>
+                    <input type='checkbox' id='HDT' />
+                    <label htmlFor='HDT'>
                       Half Damage To:{" "}
-                      <FontAwesomeIcon className="icon" icon={faAngleDown} />
+                      <FontAwesomeIcon className='icon' icon={faAngleDown} />
                     </label>
-                    <ul className="halfDamageTo">
+                    <ul className='halfDamageTo'>
                       {getDamageRelation("half_damage_to")}
                     </ul>
                   </div>
 
-                  <div className="item">
-                    <input type="checkbox" id="NDF" />
-                    <label htmlFor="NDF">
+                  <div className='item'>
+                    <input type='checkbox' id='NDF' />
+                    <label htmlFor='NDF'>
                       No Damage From:{" "}
-                      <FontAwesomeIcon className="icon" icon={faAngleDown} />
+                      <FontAwesomeIcon className='icon' icon={faAngleDown} />
                     </label>
-                    <ul className="noDamageFrom">
+                    <ul className='noDamageFrom'>
                       {getDamageRelation("no_damage_from")}
                     </ul>
                   </div>
-                  <div className="item">
-                    <input type="checkbox" id="NDT" />
-                    <label htmlFor="NDT">
+                  <div className='item'>
+                    <input type='checkbox' id='NDT' />
+                    <label htmlFor='NDT'>
                       No Damage To:{" "}
-                      <FontAwesomeIcon className="icon" icon={faAngleDown} />
+                      <FontAwesomeIcon className='icon' icon={faAngleDown} />
                     </label>
-                    <ul className="noDamageTo">
+                    <ul className='noDamageTo'>
                       {getDamageRelation("no_damage_to")}
                     </ul>
                   </div>
                 </div>
               </div>
-              <div className="pokemonsWithTypeContainer">
-                <div className="itemType">
-                  <input type="checkbox" id="PWT" />
-                  <label htmlFor="PWT">Pokemons with this type</label>
+              <div className='pokemonsWithTypeContainer'>
+                <div className='itemType'>
+                  <input type='checkbox' id='PWT' />
+                  <label htmlFor='PWT'>Pokemons with this type</label>
                   <ul>{getPokemonsWithType()}</ul>
                 </div>
               </div>

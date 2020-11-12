@@ -6,7 +6,7 @@ export default function Statbar({ base, highest, customization }) {
   }
   const percentage = (base * 100) / highest;
   let defaultColor = "#f2f2f2";
-  let defaultHeight = "20px";
+  let defaultHeight = "10px";
   let defaultWidth = "150px";
   let shadow = "2px 2px 4px rgba(0,0,0,.4)";
 
@@ -23,12 +23,12 @@ export default function Statbar({ base, highest, customization }) {
     height: "100%",
     backgroundColor: defaultColor,
     boxShadow: shadow,
+    borderRadius: "10px",
   };
   return (
     <div
-      className="StatbarComponent"
-      style={{ width: defaultWidth, height: defaultHeight }}
-    >
+      className='StatbarComponent'
+      style={{ width: defaultWidth, height: defaultHeight }}>
       <div style={style} />
     </div>
   );
