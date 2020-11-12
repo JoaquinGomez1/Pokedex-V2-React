@@ -15,8 +15,9 @@ function PokemonCardData({ name }) {
     let allowFetch = true;
     allowFetch && fetchData();
 
-    return () => (allowFetch = false);
-
+    return () => {
+      allowFetch = false;
+    };
     // eslint-disable-next-line
   }, [name]);
 

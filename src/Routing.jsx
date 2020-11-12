@@ -4,6 +4,7 @@ import Navbar from "./Components/Navbar/Navbar";
 import App from "./Components/Landing/App";
 import PokemonDetails from "./Components/PokemonDetail/PokemonDetail";
 import LastKnownContext from "./context/LastKnownUrl";
+import PageNotFound from "./Components/PageNotFound/PageNotFound";
 
 export default function Routing() {
   return (
@@ -13,6 +14,7 @@ export default function Routing() {
         <Switch>
           <Route path='/' exact component={App} />
           <Route path='/pokemon/:name' component={PokemonDetails} />
+          <Route path='*' component={PageNotFound} />
         </Switch>
       </Router>
     </LastKnownContext>

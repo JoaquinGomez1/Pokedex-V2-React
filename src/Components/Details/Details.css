@@ -45,10 +45,8 @@
 }
 
 .details-main-image-content img {
-  max-width: 70%;
-  margin: 0 15%; /* Compensate for the lost width */
-  z-index: 1;
-  position: relative;
+  max-width: 90%;
+  z-index: 10;
 }
 
 .details-main-image-content > .badge-background-circle {
