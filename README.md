@@ -1,4 +1,4 @@
-This pokedex will use PokeApi (https://pokeapi.co/) to retrieve each pokemon's data and display it in a user friendly manner.
+This pokedex uses PokeApi (https://pokeapi.co/) to retrieve each pokemon's data and display it in a user friendly manner.
 
 You can look for a Pokemon by number or name.
 
@@ -6,7 +6,6 @@ You can look for a Pokemon by number or name.
    https://pokepediav2.netlify.app/
 
 
-Project built using React and PokeAPI to make a simple Single page application.
 
 In order to run this project use the following command: 
 $ npm start
