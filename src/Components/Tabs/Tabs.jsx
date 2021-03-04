@@ -7,14 +7,15 @@ export default function Tabs(props) {
   const [tabs] = useState(ChildrenArray);
 
   return (
-    <div className='tabs-container'>
-      <div className='details-tabs'>
+    <div className="tabs-container">
+      <div className="details-tabs">
         {tabs.map((each, index) => (
           <div
             key={each.props.name}
             onClick={() => setCurrentTab(index)}
-            className={`tab-item` + (index === currentTab ? ` current` : "")}>
-            <h2>{each.props.name}</h2>
+            className={`tab-item` + (index === currentTab ? ` current` : "")}
+          >
+            <h3>{each.props.name}</h3>
           </div>
         ))}
       </div>

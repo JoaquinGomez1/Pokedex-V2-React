@@ -26,25 +26,27 @@ export default function Navbar() {
 
   return (
     <nav>
-      <div className='insideContainer'>
+      <div className="insideContainer">
         <Link
           style={{ textDecoration: "none", color: "inherit" }}
-          to='/'
-          onClick={() => setShowPokemonsFrom(0)}>
+          to="/"
+          onClick={() => setShowPokemonsFrom(0)}
+        >
           <h1>PokePedia V2</h1>
         </Link>
         <h3>Built with React</h3>
-        <div className='searchBar'>
+        <div className="searchBar">
           <input
-            style={{ padding: "10px 30px" }}
-            type='text'
-            className='inputSearch'
+            style={{ padding: "10px " }}
+            type="text"
+            placeholder="Look a pokemon up!"
+            className="inputSearch"
             onKeyDown={(e) => (e.key === "Enter" ? handleClick() : null)}
             onChange={(e) => {
               setSearchValue(e.target.value);
             }}
           />
-          <button className='btn search-btn' onClick={handleClick}>
+          <button className="btn search-btn" onClick={handleClick}>
             Search
           </button>
         </div>

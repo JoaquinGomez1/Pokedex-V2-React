@@ -53,31 +53,30 @@ function App() {
       <Link
         key={pokemon.id}
         style={{ textDecoration: "none" }}
-        to={"/pokemon/" + pokemon.name}>
+        to={"/pokemon/" + pokemon.name}
+      >
         <PokemonCardData key={pokemon.id} name={pokemon.name} />
       </Link>
     ));
   };
 
   return (
-    <React.Fragment>
-      <div className='containerFluid'>
-        <div className='buttons'>
-          <div className='buttonsContainer'>
-            <button onClick={handlePrev}>
-              <FontAwesomeIcon className='icon' icon={faAngleLeft} />
-              Previous
-            </button>
-            <button onClick={handleNext}>
-              Next <FontAwesomeIcon className='icon' icon={faAngleRight} />
-            </button>
-          </div>
-        </div>
-        <div className='bigContainer'>
-          {loading ? <Loading /> : <RenderEachCard />}
+    <div className="containerFluid">
+      <div className="buttons">
+        <div className="buttonsContainer">
+          <button onClick={handlePrev}>
+            <FontAwesomeIcon className="icon" icon={faAngleLeft} />
+            Previous
+          </button>
+          <button onClick={handleNext}>
+            Next <FontAwesomeIcon className="icon" icon={faAngleRight} />
+          </button>
         </div>
       </div>
-    </React.Fragment>
+      <div className="bigContainer">
+        {loading ? <Loading /> : <RenderEachCard />}
+      </div>
+    </div>
   );
 }
 

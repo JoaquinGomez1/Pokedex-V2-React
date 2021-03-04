@@ -21,7 +21,15 @@
   display: flex;
 }
 
-.types > h3 {
+.types > div > h3 {
   margin: 0 auto;
   text-align: center;
+}
+
+.types > div > p {
+  padding: 0 0.6rem;
+}
+
+.types > .weak-against {
+  margin-left: 10px;
 }

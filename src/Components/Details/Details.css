@@ -1,13 +1,14 @@
 .detailsContainer {
   margin-top: 10px;
   text-transform: capitalize;
-  width: 100vw;
+  width: 95vw;
   max-width: 1500px;
   display: flex;
   flex-wrap: wrap;
   min-height: 730px;
   box-shadow: 8px 4px 7px rgba(0, 0, 0, 0.2);
   margin: 3rem;
+  padding-bottom: 1.5rem;
 }
 
 .details-main-image-container {
@@ -106,8 +107,8 @@ li {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-content: center;
-  column-gap: 20%;
-  row-gap: 5px;
+  column-gap: 10%;
+  row-gap: 2px;
 }
 
 .evolutionsCard > h3 {
@@ -152,6 +153,11 @@ li {
   border-radius: 10px;
   text-align: left;
   max-width: 100%;
+  padding: 1.5rem;
+}
+
+.games {
+  padding: 0.8rem;
 }
 
 @media (max-width: 1000px) {

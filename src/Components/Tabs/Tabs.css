@@ -5,9 +5,8 @@
 }
 
 .details-tabs {
-  display: grid;
+  display: flex;
   max-width: 100%;
-  grid-template-columns: repeat(3, 1fr);
 }
 
 .details-tabs .tab-item:first-child {
