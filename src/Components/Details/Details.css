@@ -2,7 +2,7 @@
   margin-top: 10px;
   text-transform: capitalize;
   width: 95vw;
-  max-width: 1500px;
+  max-width: 1200px;
   display: flex;
   flex-wrap: wrap;
   min-height: 730px;
@@ -28,6 +28,8 @@
 
 .details-main-name,
 .details-main-id {
+  position: absolute;
+  z-index: 5;
   top: 40px;
   left: 40px;
   color: white;
@@ -47,12 +49,16 @@
 
 .details-main-image-content img {
   max-width: 90%;
+  position: absolute;
   z-index: 10;
+  top: 25%;
+  left: -50px;
+  transform: translateX(25%);
 }
 
 .details-main-image-content > .badge-background-circle {
   top: 250px;
-  left: 250px;
+  left: 100px;
   background-color: white;
   opacity: 0.15;
 }
@@ -93,7 +99,7 @@
   opacity: 0.3;
   transform: rotate(-45deg);
   text-align: center;
-  z-index: -1;
+  z-index: -10;
 }
 
 .description {
@@ -161,6 +167,19 @@ li {
 }
 
 @media (max-width: 1000px) {
+  .details-main-image-content > .badge-background-circle {
+    top: 50%;
+    max-height: 50%;
+  }
+
+  .details-main-image-content img {
+    max-width: 90%;
+    position: absolute;
+    z-index: 10;
+    top: 30%;
+    left: -50px;
+  }
+
   .statsSection {
     width: 100%;
     margin: 0;
