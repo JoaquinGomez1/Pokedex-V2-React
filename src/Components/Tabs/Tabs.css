@@ -9,7 +9,7 @@
   max-width: 100%;
 }
 
-.details-tabs .tab-item:first-child {
+/* .details-tabs .tab-item:first-child {
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
 }
@@ -17,7 +17,7 @@
 .details-tabs .tab-item:last-child {
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
-}
+} */
 
 .Evolution {
   padding: 10px;

@@ -6,9 +6,9 @@
   display: flex;
   flex-wrap: wrap;
   min-height: 730px;
-  box-shadow: 8px 4px 7px rgba(0, 0, 0, 0.2);
+  background-color: #ebe0e2;
+  /* box-shadow: 8px 4px 7px rgba(0, 0, 0, 0.2); */
   margin: 3rem;
-  padding-bottom: 1.5rem;
 }
 
 .details-main-image-container {
@@ -33,13 +33,14 @@
   top: 40px;
   left: 40px;
   color: white;
+  text-shadow: 4px 2px 3px rgba(0, 0, 0, 0.2);
   opacity: 1; /* resets inherited opacity */
 }
 
 .details-main-id {
-  top: -20px;
-  font-size: 2.5rem;
-  opacity: 0.8;
+  top: 0px;
+  font-size: 2rem;
+  opacity: 0.9;
 }
 
 .details-main-image-content {
@@ -53,7 +54,18 @@
   z-index: 10;
   top: 25%;
   left: -50px;
-  transform: translateX(25%);
+  transform: translateX(25%); /*Keeps the pokemon image centered*/
+  filter: drop-shadow(6px 4px 4px rgba(0, 0, 0, 0.2));
+  transition: 2s transform cubic-bezier(0.02, 0.012, 0.165, 1);
+}
+
+.details-main-image-content img:hover {
+  transform: translateX(calc(25% + 8px)) translateY(-5.5px);
+}
+
+.badge-background-circle,
+.pkm-japanese-name {
+  filter: blur(3px);
 }
 
 .details-main-image-content > .badge-background-circle {
@@ -115,6 +127,7 @@ li {
   justify-content: center;
   column-gap: 10%;
   row-gap: 2px;
+  margin-bottom: 2rem !important;
 }
 
 .evolutionsCard > h3 {

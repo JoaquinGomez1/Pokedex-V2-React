@@ -6,24 +6,24 @@ export default function DetailsStats({ pokemon, species }) {
   const pkmMainType = pokemon.types[0].type.name;
   const bgColor = getBackgroundColor(pkmMainType);
   return (
-    <div className='secondaryInfoDetails increaseOpacityAnimation'>
-      <div className='description'>
-        {/* GetDescription has to be called as a component otherwise react wont let me render it */}
+    <div className="secondaryInfoDetails increaseOpacityAnimation">
+      <div className="description">
         <h2>
           Description:{" "}
           <span>
-            <p>{GetDescription(species)}</p>
+            {/* Sometimes the api sends that weird up arrow on the pkm description */}
+            <p>{GetDescription(species).replace("", " ")}</p>
           </span>{" "}
         </h2>
       </div>
 
-      <div className='statsSection'>
+      <div className="statsSection">
         {pokemon.stats ? (
           <>
             <ul>
               {pokemon.stats.map((each) => (
                 <li key={each.stat.name}>
-                  <ShowStatBar
+                  <StatBar
                     bgColor={bgColor}
                     each={each}
                     customization={{ color: bgColor }}
@@ -40,7 +40,7 @@ export default function DetailsStats({ pokemon, species }) {
 
 const GetDescription = (species) => {
   // Every description has a bunch of different languages available
-  // The goal here is to find the only one in english.
+  // The goal here is to find the one in english.
   let description = species.flavor_text_entries.find(
     (each) => each.language.name === "en"
   );
@@ -48,7 +48,7 @@ const GetDescription = (species) => {
   return description.flavor_text;
 };
 
-function ShowStatBar({ each, customization }) {
+function StatBar({ each, customization }) {
   return (
     <div
       style={{
@@ -56,7 +56,8 @@ function ShowStatBar({ each, customization }) {
         flexDirection: "row",
         alignItems: "center",
         height: "30px",
-      }}>
+      }}
+    >
       <div style={{ width: "200px" }}>
         <h4 style={{ marginRight: "10px" }}>{`${each.stat.name} : `}</h4>
       </div>

@@ -19,14 +19,11 @@ nav {
 }
 
 .btn {
-  height: 100%;
-  padding: 12px 14px;
+  padding: 8px 14px;
   border: none;
-  box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   font-weight: 600;
   font-family: "Nunito";
-  border-radius: 8px;
 }
 
 .search-btn {
@@ -42,6 +39,37 @@ nav {
   border: none;
   outline: none;
   font-size: 1.2rem;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.types-selector-container {
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.combobox-container {
+  padding: 12px 0;
+  width: 400px;
+  display: flex;
+  overflow: auto;
+}
+
+.combobox-container::-webkit-scrollbar {
+  display: none;
+}
+
+.combobox-item {
+  padding: 5px 10px;
+  background-color: #d11544;
+  width: 60px;
+  margin: 0 5px;
+  border-radius: 15px;
+  color: white !important;
+}
+
+.combobox-item > a {
+  color: white;
 }
 
 @media (max-width: 800px) {

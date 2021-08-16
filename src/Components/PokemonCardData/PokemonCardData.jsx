@@ -25,6 +25,7 @@ function PokemonCardData({ name }) {
     const url = `https://pokeapi.co/api/v2/pokemon/${name}`;
     const req = await fetch(url);
     const data = await req.json();
+
     setImg(data.sprites.other["official-artwork"].front_default);
     setStateName(data.name);
     setTypes(data.types);
