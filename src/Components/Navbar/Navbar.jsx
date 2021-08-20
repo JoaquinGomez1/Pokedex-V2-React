@@ -4,6 +4,9 @@ import { useHistory, useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import { LastKnownContext } from "../../context/LastKnownUrl";
 import { useEffect } from "react";
 
@@ -12,33 +15,41 @@ export default function Navbar() {
   const history = useHistory();
   const { setShowPokemonsFrom } = useContext(LastKnownContext);
   const location = useLocation();
+  const TOAST_TIME = 3000; // 3 seconds
 
   const [isLoading, setIsLoading] = useState(true);
+  const [isSearchLoading, setIsSearchLoading] = useState(false);
   const [pokemonTypesList, setPokemonTypesList] = useState();
 
   const fetchData = async () => {
     const req = await fetch(`https://pokeapi.co/api/v2/type/`);
     const res = await req.json();
+    if (req.status === 404) notifyError();
 
     setPokemonTypesList(res.results);
     setIsLoading(false);
   };
 
+  const notifyError = () => toast.error("That pokemon does not exists");
+
   useEffect(() => {
     fetchData();
   }, []);
 
-  const handleClick = async () => {
+  const handleSearch = async () => {
     // check if the search values are not empty
-    if (searchValue) {
-      const req = await fetch(
-        `https://pokeapi.co/api/v2/pokemon/${searchValue.toLowerCase()}`
-      );
-      const pokemon = await req.json();
-      if (pokemon.id) {
-        history.push(`/pokemon/${pokemon.id}`);
-      }
-    }
+    if (!searchValue) return;
+
+    setIsSearchLoading(true);
+    const req = await fetch(
+      `https://pokeapi.co/api/v2/pokemon/${searchValue.toLowerCase()}`
+    );
+    setIsSearchLoading(false);
+
+    if (req.status === 404) notifyError();
+
+    const pokemon = await req.json();
+    history.push(`/pokemon/${pokemon.id}`);
   };
 
   const isActive = (paramTypeName) => {
@@ -49,8 +60,17 @@ export default function Navbar() {
   };
 
   return (
-    <nav>
+    <nav className="bigContainer">
       <div className="insideContainer">
+        <ToastContainer
+          position="top-center"
+          autoClose={TOAST_TIME}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss={false}
+          draggable
+        />
         <Link
           style={{ textDecoration: "none", color: "inherit" }}
           to="/"
@@ -65,13 +85,17 @@ export default function Navbar() {
             type="text"
             placeholder="Look a pokemon up!"
             className="inputSearch"
-            onKeyDown={(e) => (e.key === "Enter" ? handleClick() : null)}
+            onKeyDown={(e) => (e.key === "Enter" ? handleSearch() : null)}
             onChange={(e) => {
               setSearchValue(e.target.value);
             }}
           />
-          <button className="btn search-btn" onClick={handleClick}>
-            Search
+          <button
+            className={`btn search-btn ${isSearchLoading && " btn-disabled"}`}
+            disabled={isSearchLoading}
+            onClick={handleSearch}
+          >
+            {isSearchLoading ? "Searching..." : "Search"}
           </button>
 
           <div className="types-selector-container">

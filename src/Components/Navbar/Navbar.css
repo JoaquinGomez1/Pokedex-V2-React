@@ -32,6 +32,12 @@ nav {
   margin: 20px;
 }
 
+.btn-disabled {
+  background-color: gray;
+  color: black;
+  cursor: initial;
+}
+
 .inputSearch {
   width: 90%;
   max-width: 200px;

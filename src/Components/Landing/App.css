@@ -25,6 +25,9 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 10px;
   margin-bottom: 30px;
+}
+
+.boxShadow {
   box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.2);
 }
 

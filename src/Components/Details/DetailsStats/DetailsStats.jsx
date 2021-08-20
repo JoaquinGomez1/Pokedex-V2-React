@@ -6,7 +6,7 @@ export default function DetailsStats({ pokemon, species }) {
   const pkmMainType = pokemon.types[0].type.name;
   const bgColor = getBackgroundColor(pkmMainType);
   return (
-    <div className="secondaryInfoDetails increaseOpacityAnimation">
+    <div className="">
       <div className="description">
         <h2>
           Description:{" "}

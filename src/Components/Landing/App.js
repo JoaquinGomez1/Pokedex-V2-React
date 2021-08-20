@@ -12,9 +12,8 @@ function App() {
   const [loading, setloading] = useState(true);
   const [pokemonList, setPokemonList] = useState([]);
   const [limit] = useState(9);
-  const { showPokemonsFrom, setShowPokemonsFrom } = useContext(
-    LastKnownContext
-  );
+  const { showPokemonsFrom, setShowPokemonsFrom } =
+    useContext(LastKnownContext);
 
   const fetchData = async () => {
     const url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${showPokemonsFrom}`;
@@ -73,7 +72,7 @@ function App() {
           </button>
         </div>
       </div>
-      <div className="bigContainer">
+      <div className="bigContainer boxShadow">
         {loading ? <Loading /> : <RenderEachCard />}
       </div>
     </div>

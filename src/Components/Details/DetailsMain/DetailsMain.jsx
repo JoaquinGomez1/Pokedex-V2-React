@@ -1,5 +1,5 @@
 import React from "react";
-import "./DetailsMain.css";
+import "./DetailsMain.module.css";
 
 export default function DetailsMain({ pokemon, typeInfo }) {
   return (
