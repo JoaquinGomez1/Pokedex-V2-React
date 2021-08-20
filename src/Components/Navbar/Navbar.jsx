@@ -43,9 +43,8 @@ export default function Navbar() {
 
   const isActive = (paramTypeName) => {
     let myRoute = location.pathname.split("/");
-    if (myRoute.length >= 2) {
-      return myRoute[2] === paramTypeName;
-    }
+    if (myRoute.length >= 2) return myRoute[2] === paramTypeName;
+
     return false;
   };
 

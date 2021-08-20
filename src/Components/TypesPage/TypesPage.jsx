@@ -15,16 +15,16 @@ function TypesPage({ match }) {
   const [showPokemonsFrom, setShowPokemonsFrom] = useState(0);
 
   const fetchData = async () => {
+    setloading(true);
+    setPokemonList([]);
     const url = `https://pokeapi.co/api/v2/type/${typeName}`;
     const req = await fetch(url);
     const data = await req.json();
-    setloading(false);
     setPokemonList(data.pokemon);
+    setloading(false);
   };
 
   useEffect(() => {
-    setloading(true);
-    setPokemonList([]);
     let allowFetch = true;
     allowFetch && fetchData();
 

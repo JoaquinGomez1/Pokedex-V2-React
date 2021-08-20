@@ -56,7 +56,12 @@ nav {
 }
 
 .combobox-container::-webkit-scrollbar {
-  display: none;
+  height: 8px;
+}
+
+.combobox-container::-webkit-scrollbar-thumb {
+  background: #d11544;
+  border-radius: 40px;
 }
 
 .combobox-item {

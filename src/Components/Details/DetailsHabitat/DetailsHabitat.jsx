@@ -9,7 +9,7 @@ export default function DetailsHabitat({ pokemon, species }) {
         className="evolutions"
         style={{ width: "100%", display: "flex", justifyContent: "center" }}
       >
-        {species.evolves_from_species ? (
+        {species.evolves_from_species && (
           <div className="evolutionsCard">
             <h3>Evolves from: </h3>
 
@@ -20,11 +20,11 @@ export default function DetailsHabitat({ pokemon, species }) {
               <PokemonCardData name={species.evolves_from_species.name} />{" "}
             </Link>
           </div>
-        ) : null}
+        )}
       </div>
 
       <div className="habitat">
-        {species.habitat ? <h3>Habitat: {species.habitat.name}</h3> : null}
+        {species.habitat && <h3>Habitat: {species.habitat.name}</h3>}
       </div>
 
       <div className="games">
