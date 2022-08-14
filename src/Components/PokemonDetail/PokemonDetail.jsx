@@ -39,7 +39,7 @@ export default function PokemonDetails({ match }) {
     if (loaded) {
       const mainTypeIndex = pokemon.types.length === 2 ? 1 : 0;
 
-      const ulrTypes = await pokemon.types[mainTypeIndex].type.url;
+      const ulrTypes = pokemon.types[mainTypeIndex].type.url;
       const reqTypes = await fetch(ulrTypes);
       const typesData = await reqTypes.json();
       setTypeInfo(typesData);
@@ -51,7 +51,7 @@ export default function PokemonDetails({ match }) {
       {loaded ? (
         <Details pokemon={pokemon} species={species} typeInfo={typeInfo} />
       ) : (
-        <div style={{ marginTop: "20px" }} className='bigContainer'>
+        <div style={{ marginTop: "20px" }} className="bigContainer">
           <Loading />
         </div>
       )}
